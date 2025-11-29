@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>김민정 | 보건교육과 기록의 아카이브</title>
-  <meta name="description" content="중학교 보건교사 김민정의 수업, 여행, 생활 기록 보관소입니다.">
+  <title>김민정 | 민쪼이의 기록 보관소 🧸</title>
+  <meta name="description" content="보건교사 김민정의 수업, 여행, 일상 기록">
 
-  <!-- Google Fonts: Pretendard & Nanum Myeongjo -->
+  <!-- Google Fonts: 감자꽃(제목용), 고운돋움(본문용) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Pretendard Variable Font (CDN) -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gowun+Dodum&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Icons (Phosphor Icons) -->
+  <!-- Phosphor Icons (깔끔한 아이콘) -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <script>
@@ -26,33 +23,37 @@
         extend: {
           colors: {
             brand: {
-              50: "#FFFCF0",  /* 아주 연한 아이보리 */
-              100: "#FFF6D6",
-              200: "#FFEBB0",
+              50: "#FFFCF5",  /* 아주 연한 크림 */
+              100: "#FFF8E1", /* 버터 색 */
+              200: "#FFEDC2",
               300: "#FFDE8A",
               400: "#FFCE63",
-              500: "#FFBC3B", /* 메인 옐로우 */
-              600: "#E69F25",
-              700: "#BF7D15",
-              800: "#99600D",
-              900: "#734608",
+              500: "#FFBB33", /* 따뜻한 개나리색 */
+              600: "#FF9F1C",
+              700: "#D97706",
             },
-            point: {
-              navy: "#1e293b",
-              gray: "#64748b"
+            pastel: {
+              pink: "#FFE4E6",
+              blue: "#E0F2FE",
+              green: "#DCFCE7",
+              purple: "#F3E8FF"
             }
           },
           fontFamily: {
-            sans: ["Pretendard", "Noto Sans KR", "sans-serif"],
-            serif: ["Nanum Myeongjo", "serif"],
+            cute: ["Gamja Flower", "cursive"],   /* 제목용 귀여운 폰트 */
+            sans: ["Gowun Dodum", "sans-serif"], /* 본문용 부드러운 폰트 */
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'card': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
           },
           animation: {
-            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'float': 'float 3s ease-in-out infinite',
           },
           keyframes: {
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
           }
         }
@@ -62,132 +63,135 @@
 
   <style>
     /* 스크롤바 커스텀 */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f1f1; }
-    ::-webkit-scrollbar-thumb { background: #E69F25; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #BF7D15; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #FFFCF5; }
+    ::-webkit-scrollbar-thumb { background: #FFDE8A; border-radius: 10px; border: 2px solid #FFFCF5; }
+    ::-webkit-scrollbar-thumb:hover { background: #FFBB33; }
     
-    .blob {
-      position: absolute;
-      filter: blur(40px);
-      z-index: -1;
-      opacity: 0.4;
+    .text-highlight {
+      background: linear-gradient(120deg, #FFDE8A 0%, #FFDE8A 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 40%;
+      background-position: 0 88%;
     }
   </style>
 </head>
 
-<body class="bg-[#FFFCF0] font-sans text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
+<body class="bg-[#FFFCF5] font-sans text-stone-700 antialiased selection:bg-brand-200 selection:text-brand-800">
 
-  <!-- NAVIGATION -->
-  <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-[#FFFCF0]/80 backdrop-blur-md border-b border-brand-100/50">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-      <a href="#" class="text-xl font-serif font-bold tracking-tight text-brand-800 flex items-center gap-2">
-        <i class="ph-fill ph-book-bookmark text-brand-600"></i>
-        Minzzoy Archive
+  <!-- HEADER -->
+  <header class="fixed w-full top-0 z-50 bg-[#FFFCF5]/80 backdrop-blur-md border-b border-brand-100 transition-all">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center">
+      <a href="#" class="text-2xl font-cute font-bold text-brand-600 flex items-center gap-2 hover:scale-105 transition-transform">
+        <span>🧸 Minzzoy</span>
       </a>
       
-      <!-- Desktop Menu -->
-      <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-        <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
-        <a href="#experience" class="hover:text-brand-600 transition-colors">Experience</a>
-        <a href="#travel" class="hover:text-brand-600 transition-colors">Travel</a>
-        <a href="#lessons" class="hover:text-brand-600 transition-colors">Lessons</a>
-        <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-6 text-[17px] font-medium text-stone-600">
+        <a href="#about" class="hover:text-brand-600 hover:bg-brand-100 px-3 py-1 rounded-full transition-all">About</a>
+        <a href="#experience" class="hover:text-brand-600 hover:bg-brand-100 px-3 py-1 rounded-full transition-all">Experience</a>
+        <a href="#travel" class="hover:text-brand-600 hover:bg-brand-100 px-3 py-1 rounded-full transition-all">Travel</a>
+        <a href="#lessons" class="hover:text-brand-600 hover:bg-brand-100 px-3 py-1 rounded-full transition-all">Class</a>
+        <a href="#contact" class="hover:text-brand-600 hover:bg-brand-100 px-3 py-1 rounded-full transition-all">Contact</a>
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-2xl text-slate-700">
+      <button id="menu-btn" class="md:hidden text-2xl text-stone-600 p-2">
         <i class="ph ph-list"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 top-16 shadow-lg">
-      <nav class="flex flex-col p-6 space-y-4 text-center text-slate-600 font-medium">
-        <a href="#about" class="hover:text-brand-600" onclick="toggleMenu()">About</a>
-        <a href="#experience" class="hover:text-brand-600" onclick="toggleMenu()">Experience</a>
-        <a href="#travel" class="hover:text-brand-600" onclick="toggleMenu()">Travel</a>
-        <a href="#lessons" class="hover:text-brand-600" onclick="toggleMenu()">Lessons</a>
-        <a href="#contact" class="hover:text-brand-600" onclick="toggleMenu()">Contact</a>
-      </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-[#FFFCF5] border-b border-brand-100 shadow-soft">
+      <div class="flex flex-col p-4 space-y-2 text-center text-stone-600 font-medium">
+        <a href="#about" class="py-2 hover:bg-brand-50 rounded-lg" onclick="toggleMenu()">About</a>
+        <a href="#experience" class="py-2 hover:bg-brand-50 rounded-lg" onclick="toggleMenu()">Experience</a>
+        <a href="#travel" class="py-2 hover:bg-brand-50 rounded-lg" onclick="toggleMenu()">Travel</a>
+        <a href="#lessons" class="py-2 hover:bg-brand-50 rounded-lg" onclick="toggleMenu()">Class</a>
+        <a href="#contact" class="py-2 hover:bg-brand-50 rounded-lg" onclick="toggleMenu()">Contact</a>
+      </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-    <!-- Background Blobs -->
-    <div class="blob bg-brand-300 w-96 h-96 rounded-full top-0 -left-20 mix-blend-multiply animate-blob"></div>
-    <div class="blob bg-orange-200 w-96 h-96 rounded-full top-0 -right-20 mix-blend-multiply animate-blob animation-delay-2000"></div>
-
-    <div class="max-w-6xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12">
-      <div class="w-full md:w-3/5 space-y-6 animate-fade-in-up">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">
-          <span class="w-2 h-2 rounded-full bg-brand-500"></span>
-          Health Teacher & Creator
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+      <div class="w-full md:w-3/5 space-y-6 text-center md:text-left">
+        <div class="inline-block px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 text-sm font-bold border border-brand-200 mb-2 animate-bounce">
+          👋 안녕하세요, 환영합니다!
         </div>
         
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 font-serif">
-          일상의 온도를 기록하는<br/>
-          <span class="relative inline-block text-brand-600">
-            보건교사 김민정
-            <svg class="absolute w-full h-3 -bottom-1 left-0 text-brand-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
-            </svg>
-          </span>입니다.
+        <h1 class="text-5xl md:text-6xl font-cute leading-tight text-stone-800">
+          따뜻한 온기를 기록하는<br/>
+          <span class="text-highlight">보건쌤 김민정</span>입니다
         </h1>
         
-        <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-lg">
-          수업 속 작은 호기심과 즐거움을 발견하고,<br class="hidden md:block" />
-          따뜻한 색감으로 삶을 채워가는 것을 좋아합니다.
+        <p class="text-lg md:text-xl text-stone-600 leading-relaxed font-light">
+          아이들의 건강한 성장을 돕고,<br class="hidden md:block" />
+          일상 속 작은 행복들을 줍줍하여 기록해요 🧺
         </p>
 
-        <div class="flex flex-wrap gap-4 pt-4">
-          <a href="#contact" class="px-8 py-4 rounded-full bg-slate-900 text-white font-bold shadow-lg hover:bg-brand-600 hover:shadow-brand-200/50 transition-all transform hover:-translate-y-1">
-            강의 문의하기
+        <div class="flex gap-3 justify-center md:justify-start pt-4">
+          <a href="#contact" class="px-6 py-3 rounded-2xl bg-brand-500 text-white font-bold shadow-md hover:bg-brand-600 hover:-translate-y-1 transition-all flex items-center gap-2">
+            <i class="ph-bold ph-paper-plane-tilt"></i> 강의 문의
           </a>
-          <a href="#lessons" class="px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-700 font-bold shadow-sm hover:bg-slate-50 transition-all">
-            포트폴리오 보기
+          <a href="#lessons" class="px-6 py-3 rounded-2xl bg-white border-2 border-brand-100 text-stone-700 font-bold hover:bg-brand-50 hover:-translate-y-1 transition-all flex items-center gap-2">
+            <i class="ph-bold ph-folder-notch-open"></i> 포트폴리오
           </a>
         </div>
         
-        <div class="flex items-center gap-4 text-sm text-slate-500 pt-2">
-          <span class="flex items-center gap-1"><i class="ph-fill ph-smiley"></i> ESTJ & ESFJ</span>
-          <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-          <span>Health Edu</span>
-          <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-          <span>Archiving</span>
+        <div class="pt-4 text-sm text-stone-500 flex flex-wrap justify-center md:justify-start gap-4">
+          <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg shadow-sm border border-stone-100">💊 Health Teacher</span>
+          <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg shadow-sm border border-stone-100">🎡 ESTJ & ESFJ</span>
+          <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg shadow-sm border border-stone-100">📸 Archiver</span>
         </div>
       </div>
 
-      <div class="w-full md:w-2/5 flex justify-center md:justify-end relative">
-        <div class="relative w-64 h-64 md:w-80 md:h-80">
-          <div class="absolute inset-0 bg-brand-200 rounded-[2rem] rotate-6 transform translate-x-2 translate-y-2"></div>
-          <div class="absolute inset-0 bg-white rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-black/5 rotate-0 transition-transform hover:rotate-2">
-            <!-- 프로필 이미지 경로 확인 필요: repo에 박보검.png가 있어야 함 -->
-            <img src="박보검.png" alt="김민정 프로필" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/FFBC3B/white?text=Minzzoy';" />
+      <div class="w-full md:w-2/5 flex justify-center relative">
+        <!-- 배경 장식 -->
+        <div class="absolute w-64 h-64 bg-brand-200 rounded-full blur-3xl opacity-60 top-0 right-0 animate-pulse"></div>
+        
+        <!-- 프로필 이미지 -->
+        <div class="relative w-64 h-64 md:w-72 md:h-72">
+          <div class="absolute inset-0 bg-white rounded-[2rem] rotate-6 shadow-lg border border-stone-100"></div>
+          <div class="absolute inset-0 bg-brand-100 rounded-[2rem] -rotate-3 shadow-lg"></div>
+          <div class="relative w-full h-full rounded-[2rem] overflow-hidden shadow-card ring-4 ring-white">
+            <!-- 프로필 이미지 파일이 없으면 회색 박스로 보입니다. 파일명을 정확히 맞춰주세요 -->
+            <img src="박보검.png" alt="프로필" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" 
+                 onerror="this.src='https://placehold.co/400x400/FFEDC2/D97706?text=Minzzoy+Profile';" />
           </div>
+          <!-- 장식 이모지 -->
+          <div class="absolute -bottom-4 -right-4 text-4xl animate-float" style="animation-delay: 1s;">✨</div>
+          <div class="absolute -top-4 -left-4 text-4xl animate-float">👩‍🏫</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-8">About Me</h2>
-      
-      <div class="bg-[#FFFCF0] p-8 md:p-12 rounded-3xl shadow-sm border border-brand-100 relative">
-        <i class="ph-fill ph-quotes text-4xl text-brand-300 absolute top-8 left-8 opacity-50"></i>
+  <section id="about" class="py-20 bg-white rounded-t-[3rem] shadow-[0_-20px_40px_rgba(0,0,0,0.02)]">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="text-brand-500 font-cute text-2xl">Who am I?</span>
+        <h2 class="text-3xl font-bold mt-1">저를 소개합니다 📝</h2>
+      </div>
+
+      <div class="bg-brand-50 p-8 md:p-10 rounded-3xl border border-brand-100 relative shadow-soft">
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-brand-200/50 rounded-full blur-sm"></div>
+        <i class="ph-fill ph-quotes text-4xl text-brand-200 absolute top-6 left-6"></i>
         
-        <div class="space-y-6 text-lg text-slate-700 leading-loose">
+        <div class="space-y-6 text-lg leading-relaxed text-stone-700 text-center md:text-left relative z-10">
           <p>
-            안녕하세요. 저는 학생들의 건강한 성장을 돕는 <strong>중학교 보건교사</strong>입니다.<br/>
-            단순한 지식 전달을 넘어, 수업 속에서 아이들이 스스로 질문하고 즐거움을 찾는 과정을 설계하는 데 관심이 많습니다.
+            안녕하세요! <strong>중학교 보건교사 김민정</strong>입니다.<br/>
+            아이들이 수업 시간만큼은 긴장을 풀고, 건강에 대해 재밌게 탐구했으면 하는 마음으로 교단에 섭니다.
           </p>
           <p>
-            <strong>"기록은 기억을 이긴다"</strong>는 말을 좋아합니다.<br/>
-            새로운 정보를 수집(Scrap)하고, 나만의 방식으로 재구성(Re-organize)하는 것이 취미이자 특기입니다.
-            일할 때는 계획적인 <strong>ESTJ</strong>이지만, 쉴 때는 사람 냄새 나는 <strong>ESFJ</strong>로서 삶의 균형을 맞춰가고 있습니다.
+            저는 <strong>'정리의 힘'</strong>을 믿어요.<br/>
+            수업 자료, 여행의 추억, 소소한 살림 팁까지 차곡차곡 모으고 분류하는 걸 좋아합니다.
+            일할 땐 파워 <strong>J(계획형)</strong>지만, 놀 땐 세상 유연한 <strong>P(즉흥형)</strong>가 되고 싶은 욕심쟁이랍니다. 🤭
+          </p>
+          <p class="font-cute text-xl text-brand-600 pt-2">
+            "따뜻한 색감으로 삶을 채워가는 사람"
           </p>
         </div>
       </div>
@@ -195,55 +199,43 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="py-24 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-        <div>
-          <h2 class="text-3xl font-serif font-bold text-slate-900">Experience & Awards</h2>
-          <p class="mt-2 text-slate-500">걸어온 길과 성장 과정입니다.</p>
-        </div>
-        <a href="https://linkedin.com" target="_blank" class="hidden md:inline-flex items-center gap-1 text-brand-600 font-semibold hover:underline">
-          더 자세한 이력 보기 <i class="ph ph-arrow-right"></i>
-        </a>
-      </div>
+  <section id="experience" class="py-20 bg-brand-50/50">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold font-cute text-center mb-12">
+        <span class="inline-block border-b-4 border-brand-200 px-4">Experience & Awards 🏆</span>
+      </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 1 -->
-        <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
-            <i class="ph-fill ph-chalkboard-teacher"></i>
-          </div>
-          <h3 class="font-bold text-xl text-slate-800">중학교 보건교사</h3>
-          <p class="text-slate-400 text-sm mt-1">2018 - 현재</p>
-          <p class="mt-4 text-slate-600 leading-relaxed">
-            학생 건강관리 및 보건실 운영.<br/>
-            참여형 보건 교육 커리큘럼 개발 및 적용.
+        <div class="bg-white p-6 rounded-3xl shadow-soft hover:shadow-card hover:-translate-y-2 transition-all duration-300 border border-stone-50 group">
+          <div class="w-14 h-14 bg-pastel-pink rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">🏫</div>
+          <h3 class="font-bold text-xl mb-1">중학교 보건교사</h3>
+          <p class="text-stone-400 text-sm mb-3">2018 - 현재</p>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            학생들의 몸과 마음 건강을 책임집니다.<br/>
+            지루하지 않은 참여형 보건 수업을 연구해요.
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
-            <i class="ph-fill ph-pencil-circle"></i>
-          </div>
-          <h3 class="font-bold text-xl text-slate-800">교육 콘텐츠 개발</h3>
-          <p class="text-slate-400 text-sm mt-1">2020 - 현재</p>
-          <p class="mt-4 text-slate-600 leading-relaxed">
-            에듀테크 활용 수업 자료 제작.<br/>
-            교사 대상 수업 사례 공유 및 연수 진행.
+        <div class="bg-white p-6 rounded-3xl shadow-soft hover:shadow-card hover:-translate-y-2 transition-all duration-300 border border-stone-50 group">
+          <div class="w-14 h-14 bg-pastel-blue rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">💻</div>
+          <h3 class="font-bold text-xl mb-1">교육 콘텐츠 개발</h3>
+          <p class="text-stone-400 text-sm mb-3">2020 - 현재</p>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            에듀테크를 활용한 수업 자료를 만들고,<br/>
+            선생님들과 나누는 기쁨을 즐깁니다.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
-            <i class="ph-fill ph-medal"></i>
-          </div>
-          <h3 class="font-bold text-xl text-slate-800">전문성 신장</h3>
-          <p class="text-slate-400 text-sm mt-1">Ongoing</p>
-          <p class="mt-4 text-slate-600 leading-relaxed">
-            지역 교육청 주관 교사 연수 수료.<br/>
-            보건 교육 연구회 활동 및 프로젝트 참여.
+        <div class="bg-white p-6 rounded-3xl shadow-soft hover:shadow-card hover:-translate-y-2 transition-all duration-300 border border-stone-50 group">
+          <div class="w-14 h-14 bg-pastel-green rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">🎓</div>
+          <h3 class="font-bold text-xl mb-1">전문성 신장</h3>
+          <p class="text-stone-400 text-sm mb-3">Ongoing</p>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            멈추지 않고 배웁니다.<br/>
+            다양한 연수와 워크숍에 참여하고 있어요.
           </p>
         </div>
       </div>
@@ -251,131 +243,141 @@
   </section>
 
   <!-- TRAVEL (Polaroid Style) -->
-  <section id="travel" class="py-24 bg-[#FFFCF0] overflow-hidden">
+  <section id="travel" class="py-20 bg-white overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-2">Travel Log</h2>
-      <p class="text-slate-600 mb-10">새로운 영감을 주는 여행의 순간들</p>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold font-cute">여행 기록 ✈️</h2>
+        <p class="text-stone-500 mt-2">지구 구석구석, 행복했던 순간들</p>
+      </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Item 1 -->
-        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[-2deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300">
-          <div class="w-full h-48 bg-gray-200 overflow-hidden mb-4">
-             <!-- 이미지 없을 시 색상박스로 대체 -->
-             <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=400&q=80')"></div>
+        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[-2deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300 border border-stone-100">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden mb-4 relative">
+             <div class="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=400&q=80')"></div>
           </div>
-          <h3 class="font-serif font-bold text-lg text-center text-slate-800">Canada West</h3>
-          <p class="text-center text-xs text-gray-500 mt-1">2025. 07 - 08</p>
+          <div class="text-center">
+            <h3 class="font-cute text-2xl text-stone-800">Canada West</h3>
+            <p class="text-xs text-brand-600 font-bold mt-1 tracking-widest">2025. SUMMER</p>
+          </div>
         </div>
 
         <!-- Item 2 -->
-        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[2deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300">
-          <div class="w-full h-48 bg-gray-200 overflow-hidden mb-4">
-             <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=400&q=80')"></div>
+        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[2deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300 border border-stone-100">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden mb-4 relative">
+             <div class="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=400&q=80')"></div>
           </div>
-          <h3 class="font-serif font-bold text-lg text-center text-slate-800">Italy</h3>
-          <p class="text-center text-xs text-gray-500 mt-1">2026. 01</p>
+          <div class="text-center">
+            <h3 class="font-cute text-2xl text-stone-800">Italy</h3>
+            <p class="text-xs text-brand-600 font-bold mt-1 tracking-widest">2026. WINTER</p>
+          </div>
         </div>
 
         <!-- Item 3 -->
-        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[-1deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300">
-          <div class="w-full h-48 bg-gray-200 overflow-hidden mb-4">
-            <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542998967-62057924d5b2?auto=format&fit=crop&w=400&q=80')"></div>
+        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[-1deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300 border border-stone-100">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden mb-4 relative">
+             <div class="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1542998967-62057924d5b2?auto=format&fit=crop&w=400&q=80')"></div>
           </div>
-          <h3 class="font-serif font-bold text-lg text-center text-slate-800">Boracay</h3>
-          <p class="text-center text-xs text-gray-500 mt-1">2025. 01</p>
+          <div class="text-center">
+            <h3 class="font-cute text-2xl text-stone-800">Boracay</h3>
+            <p class="text-xs text-brand-600 font-bold mt-1 tracking-widest">2025. JAN</p>
+          </div>
         </div>
 
         <!-- Item 4 -->
-        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[3deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300">
-          <div class="w-full h-48 bg-gray-200 overflow-hidden mb-4">
-            <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=400&q=80')"></div>
+        <div class="bg-white p-3 pb-8 shadow-lg transform rotate-[3deg] hover:rotate-0 hover:z-10 hover:scale-105 transition-all duration-300 border border-stone-100">
+          <div class="w-full h-48 bg-gray-100 overflow-hidden mb-4 relative">
+             <div class="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style="background-image: url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=400&q=80')"></div>
           </div>
-          <h3 class="font-serif font-bold text-lg text-center text-slate-800">Bohol</h3>
-          <p class="text-center text-xs text-gray-500 mt-1">2024. 01</p>
+          <div class="text-center">
+            <h3 class="font-cute text-2xl text-stone-800">Bohol</h3>
+            <p class="text-xs text-brand-600 font-bold mt-1 tracking-widest">2024. JAN</p>
+          </div>
         </div>
       </div>
 
-      <!-- Downloads Section -->
-      <div class="mt-16 p-8 bg-white/50 border border-brand-200 rounded-2xl">
-        <h3 class="flex items-center gap-2 font-bold text-slate-800 mb-4">
-          <i class="ph-fill ph-folder-open text-brand-600"></i>
-          여행/학습 자료 아카이브
-        </h3>
-        <div class="flex flex-wrap gap-3">
-          <a href="chatgpt.pdf" download class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200 text-sm hover:border-brand-400 hover:text-brand-700 transition-colors">
-            <i class="ph-fill ph-file-pdf text-red-400"></i> ChatGPT 활용법.pdf
+      <!-- Downloads -->
+      <div class="mt-16 bg-brand-50 p-6 rounded-2xl border border-brand-200 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-white p-3 rounded-full shadow-sm text-2xl">📂</div>
+          <div>
+            <h4 class="font-bold text-stone-800">공유 자료실</h4>
+            <p class="text-sm text-stone-500">여행 꿀팁과 템플릿을 나눠드려요!</p>
+          </div>
+        </div>
+        <div class="flex gap-2 flex-wrap justify-center">
+          <a href="chatgpt.pdf" download class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-medium hover:text-brand-600 hover:scale-105 transition-all">
+            🤖 ChatGPT 활용.pdf
           </a>
-          <a href="notion.pdf" download class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200 text-sm hover:border-brand-400 hover:text-brand-700 transition-colors">
-            <i class="ph-fill ph-file-pdf text-red-400"></i> 노션 템플릿 가이드.pdf
+          <a href="notion.pdf" download class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-medium hover:text-brand-600 hover:scale-105 transition-all">
+            📒 노션 템플릿.pdf
           </a>
-          <a href="miricanvas.pdf" download class="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200 text-sm hover:border-brand-400 hover:text-brand-700 transition-colors">
-            <i class="ph-fill ph-file-pdf text-red-400"></i> 미리캔버스 디자인.pdf
+          <a href="miricanvas.pdf" download class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-medium hover:text-brand-600 hover:scale-105 transition-all">
+            🎨 미리캔버스.pdf
           </a>
         </div>
-        <p class="text-xs text-slate-400 mt-3">* 클릭하면 파일이 다운로드 됩니다. (실제 파일이 Repository에 있어야 합니다)</p>
       </div>
     </div>
   </section>
 
   <!-- LESSONS -->
-  <section id="lessons" class="py-24 bg-white">
+  <section id="lessons" class="py-20 bg-stone-50">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="text-brand-600 font-bold tracking-widest text-sm uppercase">Portfolio</span>
-        <h2 class="text-3xl font-serif font-bold text-slate-900 mt-2">수업 및 프로젝트</h2>
+      <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div>
+          <h2 class="text-3xl font-bold font-cute">수업 & 프로젝트 👩‍🏫</h2>
+          <p class="text-stone-500 mt-2">아이들과 함께 만든 소중한 결과물</p>
+        </div>
+        <span class="text-xs font-bold text-brand-500 bg-brand-100 px-3 py-1 rounded-full">PORTFOLIO</span>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Project 1 -->
-        <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300">
-          <div class="h-48 overflow-hidden bg-slate-100 relative">
-             <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-             <!-- 이미지 없을 시 대비 -->
-             <img src="aicatchmind.png" onerror="this.src='https://placehold.co/400x300/e2e8f0/64748b?text=AI+CatchMind'" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300">
+          <div class="h-48 overflow-hidden bg-gray-100 relative">
+             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+             <!-- 이미지 경로 확인 필요 -->
+             <img src="aicatchmind.png" onerror="this.src='https://placehold.co/400x300/FFE4E6/E11D48?text=AI+Class';" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <div class="p-6">
-            <div class="text-xs font-bold text-brand-600 mb-2">EDUTECH</div>
-            <h3 class="font-bold text-lg text-slate-800 mb-2">AI Catch Mind</h3>
-            <p class="text-sm text-slate-500 line-clamp-2">AI 드로잉 툴을 활용하여 보건 용어를 설명하고 맞추는 창의 융합 수업입니다.</p>
+          <div class="p-5">
+            <h3 class="font-bold text-lg text-stone-800 mb-1">🧠 AI Catch Mind</h3>
+            <p class="text-sm text-stone-500">AI로 배우는 창의 융합 수업</p>
           </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300">
-          <div class="h-48 overflow-hidden bg-slate-100 relative">
-             <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-             <img src="proverb-game.png" onerror="this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Proverb+Game'" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300">
+          <div class="h-48 overflow-hidden bg-gray-100 relative">
+             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+             <img src="proverb-game.png" onerror="this.src='https://placehold.co/400x300/DCFCE7/16A34A?text=Game+Class';" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <div class="p-6">
-            <div class="text-xs font-bold text-brand-600 mb-2">GAMIFICATION</div>
-            <h3 class="font-bold text-lg text-slate-800 mb-2">속담 게임</h3>
-            <p class="text-sm text-slate-500 line-clamp-2">건강 관련 속담을 재미있는 게임 형식으로 풀어내어 학생들의 흥미를 유발합니다.</p>
+          <div class="p-5">
+            <h3 class="font-bold text-lg text-stone-800 mb-1">🎮 속담 게임</h3>
+            <p class="text-sm text-stone-500">놀이로 배우는 건강 상식</p>
           </div>
         </div>
 
         <!-- Project 3 -->
-        <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300">
-          <div class="h-48 overflow-hidden bg-slate-100 relative">
-             <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-             <img src="shopping-mission.png" onerror="this.src='https://placehold.co/400x300/e2e8f0/64748b?text=Shopping+Mission'" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300">
+          <div class="h-48 overflow-hidden bg-gray-100 relative">
+             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+             <img src="shopping-mission.png" onerror="this.src='https://placehold.co/400x300/E0F2FE/0284C7?text=Shopping';" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <div class="p-6">
-            <div class="text-xs font-bold text-brand-600 mb-2">PBL</div>
-            <h3 class="font-bold text-lg text-slate-800 mb-2">영양 쇼핑 미션</h3>
-            <p class="text-sm text-slate-500 line-clamp-2">한정된 예산으로 균형 잡힌 식단을 구성해보는 실생활 문제 해결 수업입니다.</p>
+          <div class="p-5">
+            <h3 class="font-bold text-lg text-stone-800 mb-1">🛒 영양 쇼핑 미션</h3>
+            <p class="text-sm text-stone-500">현실적인 식단 짜기 프로젝트</p>
           </div>
         </div>
 
         <!-- Project 4 -->
-        <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-300">
-          <div class="h-48 overflow-hidden bg-slate-100 relative">
-             <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
-             <img src="tts-demo.png" onerror="this.src='https://placehold.co/400x300/e2e8f0/64748b?text=TTS+Demo'" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300">
+          <div class="h-48 overflow-hidden bg-gray-100 relative">
+             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+             <img src="tts-demo.png" onerror="this.src='https://placehold.co/400x300/F3E8FF/9333EA?text=TTS+Demo';" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <div class="p-6">
-            <div class="text-xs font-bold text-brand-600 mb-2">ACCESSIBILITY</div>
-            <h3 class="font-bold text-lg text-slate-800 mb-2">TTS 활용 교육</h3>
-            <p class="text-sm text-slate-500 line-clamp-2">음성 합성 기술(TTS)을 활용하여 시청각 자료를 제작하고 시연하는 프로젝트입니다.</p>
+          <div class="p-5">
+            <h3 class="font-bold text-lg text-stone-800 mb-1">🔊 TTS 데모</h3>
+            <p class="text-sm text-stone-500">모두를 위한 배리어프리 교육</p>
           </div>
         </div>
       </div>
@@ -383,60 +385,60 @@
   </section>
 
   <!-- SCRAP -->
-  <section id="scrap" class="py-24 bg-brand-50 border-t border-brand-100">
+  <section id="scrap" class="py-20 bg-white">
     <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-        <i class="ph-fill ph-push-pin text-brand-600"></i> Scrap Board
+      <h2 class="text-2xl font-bold font-cute mb-8 flex items-center gap-2">
+        <span class="text-brand-500">📌</span> 스크랩 보드
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
         <!-- Col 1 -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="ph ph-airplane-tilt text-brand-500"></i> 여행</h4>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>여행지 리스트</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>예산 템플릿</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>계획 노트</li>
+        <div class="bg-[#FFFCF5] p-5 rounded-2xl border border-brand-100 hover:border-brand-300 transition-colors">
+          <h4 class="font-bold text-stone-800 mb-3 flex items-center gap-2">🛫 여행</h4>
+          <ul class="space-y-2 text-sm text-stone-600">
+            <li>• 여행지 리스트</li>
+            <li>• 예산 템플릿</li>
+            <li>• 맛집 지도</li>
           </ul>
         </div>
 
         <!-- Col 2 -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="ph ph-house-line text-brand-500"></i> 생활</h4>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>건강 루틴</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>집정리 아이디어</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>홈카페 메뉴</li>
+        <div class="bg-[#FFFCF5] p-5 rounded-2xl border border-brand-100 hover:border-brand-300 transition-colors">
+          <h4 class="font-bold text-stone-800 mb-3 flex items-center gap-2">🏠 생활</h4>
+          <ul class="space-y-2 text-sm text-stone-600">
+            <li>• 건강 루틴</li>
+            <li>• 미니멀 라이프</li>
+            <li>• 홈카페 레시피</li>
           </ul>
         </div>
 
         <!-- Col 3 -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="ph ph-shopping-bag text-brand-500"></i> 쇼핑</h4>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>위시리스트</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>가격 비교</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>추천 링크</li>
+        <div class="bg-[#FFFCF5] p-5 rounded-2xl border border-brand-100 hover:border-brand-300 transition-colors">
+          <h4 class="font-bold text-stone-800 mb-3 flex items-center gap-2">🛍️ 쇼핑</h4>
+          <ul class="space-y-2 text-sm text-stone-600">
+            <li>• 위시리스트</li>
+            <li>• 최저가 비교</li>
+            <li>• 선물 추천</li>
           </ul>
         </div>
 
         <!-- Col 4 -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="ph ph-notebook text-brand-500"></i> 수업</h4>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>수업 아이디어</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>활동지 참고</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>평가 루브릭</li>
+        <div class="bg-[#FFFCF5] p-5 rounded-2xl border border-brand-100 hover:border-brand-300 transition-colors">
+          <h4 class="font-bold text-stone-800 mb-3 flex items-center gap-2">📚 수업</h4>
+          <ul class="space-y-2 text-sm text-stone-600">
+            <li>• 수업 아이디어</li>
+            <li>• 활동지 모음</li>
+            <li>• 평가 기준안</li>
           </ul>
         </div>
 
         <!-- Col 5 -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2"><i class="ph ph-briefcase text-brand-500"></i> 업무</h4>
-          <ul class="space-y-2 text-sm text-slate-600">
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>문서 템플릿</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>체크리스트</li>
-            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-slate-300"></div>연간 계획</li>
+        <div class="bg-[#FFFCF5] p-5 rounded-2xl border border-brand-100 hover:border-brand-300 transition-colors">
+          <h4 class="font-bold text-stone-800 mb-3 flex items-center gap-2">💼 업무</h4>
+          <ul class="space-y-2 text-sm text-stone-600">
+            <li>• 공문 서식</li>
+            <li>• 체크리스트</li>
+            <li>• 학사 일정</li>
           </ul>
         </div>
       </div>
@@ -444,58 +446,47 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-24 bg-white relative overflow-hidden">
-    <div class="absolute right-0 bottom-0 w-64 h-64 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
-    
+  <section id="contact" class="py-24 bg-brand-50 relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <div class="inline-block p-4 rounded-full bg-brand-50 text-brand-600 text-3xl mb-6 shadow-sm">
-        <i class="ph-fill ph-envelope-open"></i>
+      <div class="inline-block p-4 rounded-full bg-white text-brand-500 text-3xl mb-6 shadow-sm animate-bounce">
+        💌
       </div>
-      <h2 class="text-4xl font-serif font-bold text-slate-900 mb-4">Let's Work Together</h2>
-      <p class="text-slate-600 text-lg mb-10">
-        강의, 연수, 컨설팅 문의는 언제든 환영합니다.<br/>
-        메일로 연락 주시면 확인 후 답변드리겠습니다.
+      <h2 class="text-4xl font-cute font-bold text-stone-800 mb-4">함께 이야기 나눠요!</h2>
+      <p class="text-stone-600 text-lg mb-8">
+        강의, 연수, 혹은 소소한 질문도 환영합니다.<br/>
+        메일 주시면 따뜻한 답변 드릴게요 :)
       </p>
 
-      <a
-        href="mailto:minzzoy2018@gmail.com"
-        class="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-bold rounded-full shadow-lg hover:bg-brand-600 hover:shadow-brand-200/50 transition-all transform hover:-translate-y-1"
-      >
-        minzzoy2018@gmail.com <i class="ph ph-paper-plane-right"></i>
+      <a href="mailto:minzzoy2018@gmail.com"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-brand-500 text-white font-bold rounded-full shadow-lg hover:bg-brand-600 hover:scale-105 transition-all">
+        <i class="ph-bold ph-envelope-simple"></i> minzzoy2018@gmail.com
       </a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-50 py-12 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-center md:text-left">
-        <p class="font-bold text-slate-800">Minzzoy Archive</p>
-        <p class="text-sm text-slate-500 mt-1">Designed for Future Education</p>
-      </div>
-      <div class="flex gap-4">
-        <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-brand-600 hover:border-brand-600 transition-all">
-          <i class="ph-fill ph-instagram-logo text-xl"></i>
-        </a>
-        <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-brand-600 hover:border-brand-600 transition-all">
-          <i class="ph-fill ph-youtube-logo text-xl"></i>
-        </a>
-      </div>
-      <div class="text-sm text-slate-400">
+  <footer class="bg-white py-10 border-t border-stone-100">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col items-center gap-4 text-center">
+      <div class="font-cute text-xl text-stone-800">🧸 Minzzoy Archive</div>
+      <p class="text-sm text-stone-400">
+        Designed with 💛 for Future Education<br/>
         © 2026 Kim Min-jeong. All Rights Reserved.
+      </p>
+      <div class="flex gap-4 mt-2">
+        <a href="#" class="text-stone-400 hover:text-brand-600 transition-colors text-2xl"><i class="ph-fill ph-instagram-logo"></i></a>
+        <a href="#" class="text-stone-400 hover:text-red-500 transition-colors text-2xl"><i class="ph-fill ph-youtube-logo"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- Mobile Menu Logic -->
   <script>
+    // 모바일 메뉴 토글
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
     function toggleMenu() {
       mobileMenu.classList.toggle('hidden');
     }
-
     menuBtn.addEventListener('click', toggleMenu);
   </script>
 
