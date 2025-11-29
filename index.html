@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>김민정 | 개인 홈페이지</title>
+
+  <!-- Tailwind Play CDN (런타임) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom config: 노랑 기반 따뜻한 색상
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fffdf6',
+              100: '#fff8e0',
+              200: '#ffefb3',
+              300: '#ffdf7a',
+              400: '#ffd24a',
+              500: '#ffc107', // primary yellow
+              600: '#e6b006',
+              700: '#b88705',
+              800: '#8a6204',
+              900: '#5f3f03'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React & ReactDOM UMD -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <style>
+    /* 기본 바디 스타일: 깔끔하고 따뜻한 분위기 */
+    html, body, #root { height: 100%; }
+    body {
+      margin: 0;
+      background: white;
+      color: #1f2937; /* gray-800 */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 이미지 원형 처리 */
+    .avatar-img { object-fit: cover; }
+
+    /* 스크롤 스무스 */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    const { useState, useEffect } = React;
+
+    /***********************
+     * 데이터
+     ***********************/
+    const experiences = [
+      { title: "중학교 보건교사 (현직)", sub: "학생 건강 관리 및 생활지도, 보건교육 기획 운영", date: "2018 - 현재" },
+      { title: "교육 콘텐츠 개발", sub: "수업 자료 제작 및 워크숍 진행 경험", date: "2020 - 현재" },
+      { title: "지역 교육 연수 수료", sub: "교사 대상 연수 강의 및 컨설팅", date: "2023" }
+    ];
+
+    const travels = [
+      { title: "캐나다 서부", period: "2025년 7월 - 8월" },
+      { title: "이탈리아", period: "2026년 1월" },
+      { title: "보라카이", period: "2025년 1월" },
+      { title: "보홀", period: "2024년 1월" }
+    ];
+
+    const lessons = [
+      { title: "AI Catch Mind", desc: "AI 기반 생각 정리 프로젝트", thumb: "aicatchmind.png" },
+      { title: "속담 게임", desc: "한국 속담을 활용한 교육용 게임", thumb: "proverb-game.png" },
+      { title: "쇼핑 미션", desc: "실생활 문제 해결형 수업", thumb: "shopping-mission.png" },
+      { title: "TTS 데모", desc: "음성합성 시연 프로젝트", thumb: "tts-demo.png" }
+    ];
+
+    const scraps = {
+      여행: ["여행지 리스트", "행동 계획", "예산 템플릿"],
+      생활: ["집정리 아이디어", "건강 루틴", "요리 레시피"],
+      쇼핑: ["장바구니 체크리스트", "가격비교 링크"],
+      수업: ["수업 아이디어", "평가 루브릭"],
+      업무: ["문서 템플릿", "프로젝트 체크리스트"]
+    };
+
+    /***********************
+     * 컴포넌트
+     ***********************/
+    function Container({ children }) {
+      return <div className="max-w-6xl mx-auto px-6 py-16">{children}</div>;
+    }
+
+    function Hero() {
+      return (
+        <section className="bg-white">
+          <Container>
+            <div className="flex flex-col-reverse md:flex-row items-center gap-8">
+              <div className="w-full md:w-1/2">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">
+                  김민정
+                </h1>
+                <p className="mt-3 text-xl md:text-2xl text-gray-700">교육, 수업기록, 여행, 생활</p>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a href="#contact" className="inline-flex items-center justify-center px-5 py-3 rounded-2xl shadow-md bg-brand-500 hover:bg-brand-600 text-white font-medium">
+                    강의 문의
+                  </a>
+                  <a href="#portfolio" className="inline-flex items-center justify-center px-5 py-3 rounded-2xl shadow-md border border-gray-200 hover:bg-gray-50 text-gray-800 font-medium">
+                    포트폴리오 보기
+                  </a>
+                </div>
+
+                <div className="mt-6 text-sm text-gray-600">
+                  <p>중학교 보건선생님 · 재밌는 걸 좋아해요 · MBTI: 놀땐 ESFJ, 일할 땐 ESTJ</p>
+                </div>
+              </div>
+
+              <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+                <div className="w-44 h-44 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-100">
+                  <!-- 이미지 파일명: 박보검.png -->
+                  <img src="박보검.png" alt="김민정 프로필" className="w-full h-full avatar-img" />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function About() {
+      return (
+        <section id="about" className="bg-brand-50/40 py-12">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">나는 어떤 사람인가요?</h2>
+            <div className="mt-4 space-y-4 text-gray-700">
+              <p>
+                안녕하세요. 저는 중학교에서 보건을 가르치고 있는 교사입니다. 학생들과 함께하는 시간을 소중히 여기며,
+                수업 속에서 작은 호기심과 즐거움을 발견하는 일을 좋아합니다. 직장과 개인의 삶을 균형 있게 생각하며
+                온전한 교육 경험을 만드는 데 관심이 많습니다.
+              </p>
+              <p>
+                항상 새로운 것을 수집하고 정리하는 습관이 있어 자료를 스크랩하고 재구성하는 것을 즐깁니다.
+                MBTI는 놀 땐 ESFJ, 일할 땐 ESTJ—즉 J 성향이지만 가끔은 게으른 J입니다. 삶을 따뜻한 색감처럼
+                채워가는 것을 좋아해요.
+              </p>
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Experience() {
+      return (
+        <section id="experience" className="py-12">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">Experience & Awards</h2>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {experiences.map((exp, idx) => (
+                <article key={idx} className="rounded-2xl p-5 bg-white shadow-sm ring-1 ring-gray-100">
+                  <h3 className="font-semibold text-lg text-gray-900">{exp.title}</h3>
+                  <p className="mt-2 text-gray-600">{exp.sub}</p>
+                  <p className="mt-3 text-sm text-gray-500">{exp.date}</p>
+                </article>
+              ))}
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Travels() {
+      return (
+        <section id="travel" className="py-12 bg-white">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">여행기록</h2>
+            <p className="mt-2 text-gray-600">대표적으로 다녀온 여행 목록입니다.</p>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {travels.map((t, i) => (
+                <div key={i} className="rounded-2xl bg-brand-50 p-4 shadow-md ring-1 ring-gray-100">
+                  <h3 className="font-semibold">{t.title}</h3>
+                  <p className="mt-2 text-sm text-gray-600">{t.period}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-semibold text-gray-900">자료 다운로드</h3>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <a href="chatgpt.pdf" download className="px-4 py-2 rounded-full shadow-sm ring-1 ring-gray-100 hover:bg-gray-50">
+                  chatgpt.pdf
+                </a>
+                <a href="notion.pdf" download className="px-4 py-2 rounded-full shadow-sm ring-1 ring-gray-100 hover:bg-gray-50">
+                  notion.pdf
+                </a>
+                <a href="miricanvas.pdf" download className="px-4 py-2 rounded-full shadow-sm ring-1 ring-gray-100 hover:bg-gray-50">
+                  miricanvas.pdf
+                </a>
+              </div>
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Lessons() {
+      return (
+        <section id="portfolio" className="py-12 bg-brand-50/30">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">수업기록</h2>
+            <p className="mt-2 text-gray-600">제가 진행했던 수업/프로젝트들을 소개합니다.</p>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {lessons.map((l, i) => (
+                <div key={i} className="bg-white rounded-2xl shadow-md overflow-hidden ring-1 ring-gray-100">
+                  <div className="w-full h-40 bg-gray-100 flex items-center justify-center">
+                    <img src={l.thumb} alt={l.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold">{l.title}</h3>
+                    <p className="mt-2 text-sm text-gray-600">{l.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Scrap() {
+      return (
+        <section id="scrap" className="py-12">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">스크랩</h2>
+            <p className="mt-2 text-gray-600">해보고 싶은 것들을 모아둔 공간</p>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+              {Object.entries(scraps).map(([key, items]) => (
+                <div key={key} className="rounded-2xl p-4 bg-brand-50 shadow-sm ring-1 ring-gray-100">
+                  <h4 className="font-semibold">{key}</h4>
+                  <ul className="mt-2 text-sm text-gray-700 space-y-1">
+                    {items.map((it, i) => <li key={i}>• {it}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Contact() {
+      return (
+        <section id="contact" className="py-12 bg-white">
+          <Container>
+            <h2 className="text-2xl font-bold text-gray-900">Contact</h2>
+            <p className="mt-2 text-gray-700">
+              강의·연수·컨설팅 문의는 이메일로 연락 주세요.
+            </p>
+
+            <div className="mt-4">
+              <a href="mailto:minzzoy2018@gmail.com" className="inline-flex items-center px-5 py-3 rounded-2xl shadow-md bg-brand-500 hover:bg-brand-600 text-white font-medium">
+                minzzoy2018@gmail.com
+              </a>
+            </div>
+          </Container>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="bg-gray-50 py-6">
+          <div className="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600">
+            <div>Designed for Future Education</div>
+            <div className="mt-1">© 2026 Minzzoy. All Rights Reserved.</div>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <header className="sticky top-0 bg-white/80 backdrop-blur-sm z-20 shadow-sm">
+            <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+              <a href="#" className="font-bold text-gray-900">Minzzoy</a>
+              <nav className="hidden md:flex gap-4 text-gray-700">
+                <a href="#about" className="hover:text-gray-900">About</a>
+                <a href="#experience" className="hover:text-gray-900">Experience</a>
+                <a href="#travel" className="hover:text-gray-900">Travel</a>
+                <a href="#portfolio" className="hover:text-gray-900">수업기록</a>
+                <a href="#contact" className="hover:text-gray-900">Contact</a>
+              </nav>
+            </div>
+          </header>
+
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Travels />
+            <Lessons />
+            <Scrap />
+            <Contact />
+          </main>
+
+          <Footer />
+        </div>
+      );
+    }
+
+    // 렌더링
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+  </script>
+</body>
+</html>
